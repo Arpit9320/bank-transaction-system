@@ -170,9 +170,14 @@ async function createTransaction(req, res) {
             type: "DEBIT"
         }], {session})
 
-        await (() => {
-            return new Promise((resolve) => setTimeout(resolve, 15 * 1000));
-        })()
+
+        /**
+         * - For Testing Purpose only
+         * - And stimulating real life delays
+         */
+        // await (() => {
+        //     return new Promise((resolve) => setTimeout(resolve, 15 * 1000));
+        // })()
 
         await ledgerModel.create([{
             account: toAccount,
