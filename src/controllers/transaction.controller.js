@@ -20,7 +20,7 @@ const mongoose = require("mongoose")
         * 10. send email notification 
  */
 
-async function createTranstion(req, res) {
+async function createTransaction(req, res) {
     
 
     /**
@@ -354,6 +354,6 @@ async function createInitialFundTransaction(req, res) {
 }
 
 module.exports = {
-    createTranstion,
+    createTransaction,
     createInitialFundTransaction
 }
