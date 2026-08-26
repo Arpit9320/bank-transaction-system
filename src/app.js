@@ -17,6 +17,11 @@ const transactionRouter = require("../src/routes/transaction.routes")
 /**
  * - Use Routes
  */
+
+app.get("/", (req, res)=>{
+    res.send("LedgerFlow Service is Up and Running")
+})
+
 app.use("/api/auth", authRouter)
 app.use("/api/accounts", accountRouter)
 app.use("/api/transaction", transactionRouter)
