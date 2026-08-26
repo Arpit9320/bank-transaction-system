@@ -26,6 +26,12 @@ const userSchema = new mongoose.Schema({
             "Password must be 8–20 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (e.g. @, #, !, $)."
         ],
         select: false
+    },
+    systemUser:{
+        type: Boolean,
+        default: false,
+        immutable: true,
+        select: false
     }
 },{
     timestamps: true
@@ -47,9 +53,6 @@ userSchema.pre("save", async function () {
 })
 
 userSchema.methods.comparePassword = async function (password) {
-
-    console.log(password)
-    console.log(this.password)
     
     return await bcrypt.compare(password, this.password)
 
