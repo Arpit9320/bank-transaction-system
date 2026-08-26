@@ -12,7 +12,7 @@
 
 ## 🌐 Live API
 
-**Base URL:** Coming Soon
+**Base URL:** [https://ledger-flow-77gh.onrender.com/](https://ledger-flow-77gh.onrender.com/)
 
 > The deployed application demonstrates the backend API and its transaction-processing workflows.
 
@@ -386,6 +386,31 @@ src/
 server.js
 ```
 
+---
+
+## 🧪 API Testing
+
+The project includes a Postman collection covering the core API workflows.
+
+### Collection Structure
+
+```text
+LedgerFlow API
+│
+├── Authentication
+│   ├── Register
+│   ├── Login
+│   └── Logout
+│
+├── Accounts
+│   ├── Create Account
+│   ├── Get All Accounts
+│   └── Get Account Balance
+│
+└── Transactions
+    ├── Transfer Funds
+    └── System - Initial Funds
+```
 ---
 
 ## 👨‍💻 Author
