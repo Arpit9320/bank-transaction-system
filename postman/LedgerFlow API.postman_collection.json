@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "e8b67991-0cb6-4eb4-b270-47d99b454eaa",
+    "name": "LedgerFlow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"EnterYourEmail@test.com\",\r\n    \"password\": \"EnterPassword\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/auth/login",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "protocolProfileBehavior": {
+            "disableCookies": false,
+            "followRedirects": true,
+            "strictSSL": false
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"EnterYourEmail@test.com\",\r\n    \"name\": \"EnterYourName\",\r\n    \"password\": \"EnterPassword\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/auth/register",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            },
+            "description": "Register user for the bank-ledger project, with your email name and password"
+          },
+          "response": []
+        },
+        {
+          "name": "Log-out",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/auth/logout",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "logout"
+              ]
+            },
+            "description": "To Logout the user"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Create Account",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/accounts/",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "accounts",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Accounts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/accounts/",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "accounts",
+                ""
+              ]
+            },
+            "description": "It will give all the accounts associated with the Logged-In user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Account balance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/accounts/balance/6a8b5ee6cec42e3385b3facc",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "accounts",
+                "balance",
+                "6a8b5ee6cec42e3385b3facc"
+              ]
+            },
+            "description": "Get logged-in user's account balance, give account id in params"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transaction",
+      "item": [
+        {
+          "name": "System - Initial funds",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"toAccount\": \"EnterIDHere\",\r\n    \"amount\": \"10000\",\r\n    \"idempotencyKey\": \"Enter-UUID-Here\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/transaction/system/initial-fund",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "transaction",
+                "system",
+                "initial-fund"
+              ]
+            },
+            "description": "Only for system user to add intial fund, toAccount, amount and idempotencyKey are required"
+          },
+          "response": []
+        },
+        {
+          "name": "Fund Transaction",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fromAccount\": \"EnterIDHere\",\r\n    \"toAccount\": \"EnterIDHere\",\r\n    \"amount\": 2000,\r\n    \"idempotencyKey\": \"Enter-UUID-Here\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ledger-flow-77gh.onrender.com/api/transaction/",
+              "protocol": "https",
+              "host": [
+                "ledger-flow-77gh",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "transaction",
+                ""
+              ]
+            },
+            "description": "Funds Transaction api, fromAccount(logged-in user's account id), toaacount (reciever's accoutn id), amount, idempotencyKey are required"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
