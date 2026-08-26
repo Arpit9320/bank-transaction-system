@@ -20,7 +20,7 @@ const ledgerSchema = new mongoose.Schema({
         ref: "transaction",
         required: [true, "Ledger must be associated with a transaction"],
         index: true,
-        immutale: true
+        immutable: true
     },
     type:{
         type: String,

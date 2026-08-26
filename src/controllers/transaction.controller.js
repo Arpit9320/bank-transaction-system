@@ -34,6 +34,12 @@ async function createTransaction(req, res) {
         })
     }
 
+    if(fromAccount === toAccount){
+        return res.status(400).json({
+            message: "fromAccount and toAccount should be different"
+        })
+    }
+
     if (typeof amount !== "number" || !Number.isFinite(amount) || amount <= 0) {
         return res.status(400).json({
             message: "Amount must be a valid number greater than zero"
@@ -54,7 +60,8 @@ async function createTransaction(req, res) {
     }
 
     const fromUserAccount = await accountModel.findOne({
-        _id: fromAccount
+        _id: fromAccount,
+        user: req.user._id
     })
 
     if(!fromUserAccount){
