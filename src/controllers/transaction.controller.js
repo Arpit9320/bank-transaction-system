@@ -186,10 +186,13 @@ async function createTransaction(req, res) {
             type: "CREDIT"
         }], {session})
 
-        await transactionModel.findOneAndUpdate(
+        transaction = await transactionModel.findOneAndUpdate(
             {_id: transaction._id},
             {status: "COMPLETED"},
-            {session}
+            {
+                session, 
+                new: true
+            }
         )
 
 
