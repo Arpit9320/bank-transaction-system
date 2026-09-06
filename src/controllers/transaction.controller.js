@@ -220,8 +220,10 @@ async function createTransaction(req, res) {
     /**
      * 10. send email notification
      */
-
-    await emailService.sendTransactionEmail(req.user.email, req.user.name, amount, toAccount)
+    emailService.sendTransactionEmail(req.user.email,req.user.name,amount,toAccount)
+    .catch(error => {
+        console.error("Transaction email failed:", error)
+    })
 
     res.status(201).json({
         message: "Transaction Completed Successfully!",
