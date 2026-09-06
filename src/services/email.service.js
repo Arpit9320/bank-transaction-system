@@ -1,4 +1,8 @@
 const nodemailer = require('nodemailer');
+const dns = require("dns").promises;
+const net = require("net");
+
+
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -13,6 +17,43 @@ const transporter = nodemailer.createTransport({
     refreshToken: process.env.REFRESH_TOKEN,
   },
 });
+
+async function testSMTPConnection() {
+    try {
+        const dnsResult = await dns.lookup("smtp.gmail.com", {
+            family: 4
+        });
+
+        console.log("Gmail SMTP DNS:", dnsResult);
+
+        const socket = net.createConnection({
+            host: "smtp.gmail.com",
+            port: 587,
+            family: 4,
+            timeout: 10000
+        });
+
+        socket.on("connect", () => {
+            console.log("✅ Gmail SMTP TCP connection successful");
+            socket.destroy();
+        });
+
+        socket.on("timeout", () => {
+            console.error("❌ Gmail SMTP TCP connection TIMEOUT");
+            socket.destroy();
+        });
+
+        socket.on("error", (error) => {
+            console.error("❌ Gmail SMTP TCP connection ERROR:", error);
+        });
+
+    } catch (error) {
+        console.error("❌ Gmail SMTP DNS ERROR:", error);
+    }
+}
+
+testSMTPConnection();
+
 
 // Verify the connection configuration
 transporter.verify((error, success) => {

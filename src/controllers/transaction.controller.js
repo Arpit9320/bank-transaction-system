@@ -191,7 +191,7 @@ async function createTransaction(req, res) {
             {status: "COMPLETED"},
             {
                 session, 
-                new: true
+                returnDocument: "after"
             }
         )
 
